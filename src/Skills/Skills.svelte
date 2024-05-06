@@ -1,7 +1,9 @@
 <script>
   import { getLanguages } from "../Client/LanguageClient";
+  import { GetTools } from "../Client/ToolClient";
   import SkillList from "./SkillList.svelte";
-  const LanguagePromise = getLanguages()
+  const LanguagePromise = getLanguages();
+  const toolPromise = GetTools();
 </script>
 <main>
     <h2>
@@ -14,13 +16,18 @@
     {:catch error}
         <SkillList label={"Error"} />
     {/await}
-    <SkillList label={"Tools and Frameworks"} />
+    {#await toolPromise}
+        <SkillList label={"Tools and Frameworks"} />
+    {:then tools} 
+        <SkillList label={"Tools and Frameworks"} skills={tools} />
+    {:catch}
+        <SkillList label={"Error"} />
+    {/await}
 </main>
 
 <style>
     main{
         display: block;
-        outline: 1px solid red;
     }
     main :global(h2){
         margin-bottom: 0;
