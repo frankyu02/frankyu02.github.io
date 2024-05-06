@@ -15,3 +15,29 @@ export async function GetExperience(
     throw new Error("request failed");
   }
 }
+
+export async function GetExperiencesByLanguage(
+  language: string
+): Promise<ExperienceDto[]> {
+  const res = await fetch(
+    `${import.meta.env.VITE_API_URL}/experience/language?language=${language}`
+  );
+  if (res.ok) {
+    return await res.json();
+  } else {
+    throw new Error("request failed");
+  }
+}
+
+export async function GetExperiencesByTool(
+  tool: string
+): Promise<ExperienceDto[]> {
+  const res = await fetch(
+    `${import.meta.env.VITE_API_URL}/experience/tool?tool=${tool}`
+  );
+  if (res.ok) {
+    return await res.json();
+  } else {
+    throw new Error("request failed");
+  }
+}

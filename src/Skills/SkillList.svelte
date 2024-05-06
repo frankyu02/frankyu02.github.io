@@ -1,9 +1,14 @@
 <script lang="ts">
   import type { LanguageDto } from "../Interfaces/LanguageDTO";
+  import { pages } from "../Interfaces/PageApi";
   import type { ToolDto } from "../Interfaces/ToolDTO";
 
   export let label: string;
   export let skills: LanguageDto[] | ToolDto[] | undefined = undefined;
+  export let listType: pages = pages.language;
+  export let updatePage:
+    | ((page: pages, filter: string | undefined) => void)
+    | undefined = undefined;
   let space = String.fromCharCode(160);
 </script>
 
@@ -32,7 +37,11 @@
       </div>
     {:else}
       {#each skills as skill, i}
-        <p class="skill">{skill.name}</p>
+        <button
+          class="skill"
+          on:click={() => updatePage && updatePage(listType, skill.name)}
+          >{skill.name}</button
+        >
         {#if i != skills.length - 1}
           <span>{space}•{space}</span>
         {/if}
@@ -42,9 +51,6 @@
 </main>
 
 <style>
-  p {
-    margin: 0;
-  }
   main {
     display: flex;
   }
@@ -52,14 +58,15 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    margin-left: 50px;
+    margin-left: 0px;
   }
   .label {
-    width: 200px;
+    min-width: 200px;
   }
 
   .skill {
     text-decoration: underline;
+    font-size: 1rem;
     &:hover {
       cursor: pointer;
     }

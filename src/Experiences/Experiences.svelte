@@ -1,13 +1,23 @@
-<script>
+<script lang="ts">
   import { GetExperience } from "../Client/ExperienceClient";
+  import { pages } from "../Interfaces/PageApi";
   import ExperienceList from "./ExperienceList.svelte";
   import ExperienceLoading from "./ExperienceLoading.svelte";
 
   const experiencePromise = GetExperience();
+  export let updatePage: (page: pages, filter: string | undefined) => void;
 </script>
 
 <main>
-  <h2>Experiences</h2>
+  <button
+    type="button"
+    class="h2Button"
+    on:click={() => {
+      updatePage(pages.experience, undefined);
+    }}
+    >Experiences
+  </button>
+
   <div class="experienceListWrapper">
     {#await experiencePromise}
       <ExperienceLoading />
@@ -22,13 +32,5 @@
 <style>
   main {
     display: block;
-  }
-  main :global(h2) {
-    margin-bottom: 0;
-    color: lightblue;
-    text-decoration: underline;
-    &:hover {
-      cursor: pointer;
-    }
   }
 </style>

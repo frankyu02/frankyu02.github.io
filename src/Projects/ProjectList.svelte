@@ -53,10 +53,16 @@
   p {
     margin-bottom: 0;
   }
+  ul {
+    margin-bottom: 0;
+  }
   .experienceHeader {
     display: flex;
   }
   .first-child :global(p) {
+    margin: 0;
+  }
+  .first-child :global(a) {
     margin: 0;
   }
   .company {
@@ -68,5 +74,8 @@
   .experienceSkillItem {
     margin: 0;
     font-size: 0.75rem;
+  }
+  a {
+    margin-top: 1em;
   }
 </style>

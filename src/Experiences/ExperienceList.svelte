@@ -84,6 +84,9 @@
   p {
     margin-bottom: 0;
   }
+  ul {
+    margin-bottom: 0;
+  }
   .experienceHeader {
     display: flex;
   }

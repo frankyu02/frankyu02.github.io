@@ -14,10 +14,6 @@
   main :global(h2) {
     margin-bottom: 0;
     color: lightblue;
-    text-decoration: underline;
-    &:hover {
-      cursor: pointer;
-    }
   }
   .educationYear {
     font-size: 0.75rem;

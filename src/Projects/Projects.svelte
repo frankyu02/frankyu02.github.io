@@ -1,13 +1,21 @@
-<script>
+<script lang="ts">
   import { GetFeaturedProjects } from "../Client/ProjectClient";
   import ExperienceLoading from "../Experiences/ExperienceLoading.svelte";
+  import { pages } from "../Interfaces/PageApi";
   import ProjectList from "./ProjectList.svelte";
-
+  export let updatePage: (page: pages, filter: string | undefined) => void;
   const featuredProjectsPromise = GetFeaturedProjects();
 </script>
 
 <main>
-  <h2>Projects</h2>
+  <button
+    type="button"
+    class="h2Button"
+    on:click={() => {
+      updatePage(pages.projects, undefined);
+    }}
+    >Projects
+  </button>
   {#await featuredProjectsPromise}
     <ExperienceLoading />
   {:then projects}
