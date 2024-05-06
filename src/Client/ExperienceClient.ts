@@ -20,7 +20,9 @@ export async function GetExperiencesByLanguage(
   language: string
 ): Promise<ExperienceDto[]> {
   const res = await fetch(
-    `${import.meta.env.VITE_API_URL}/experience/language?language=${language}`
+    `${
+      import.meta.env.VITE_API_URL
+    }/experience/language?language=${encodeURIComponent(language)}`
   );
   if (res.ok) {
     return await res.json();
@@ -33,7 +35,9 @@ export async function GetExperiencesByTool(
   tool: string
 ): Promise<ExperienceDto[]> {
   const res = await fetch(
-    `${import.meta.env.VITE_API_URL}/experience/tool?tool=${tool}`
+    `${import.meta.env.VITE_API_URL}/experience/tool?tool=${encodeURIComponent(
+      tool
+    )}`
   );
   if (res.ok) {
     return await res.json();
