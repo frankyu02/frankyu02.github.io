@@ -27,7 +27,9 @@ export async function GetProjectsByLanguage(
   language: string
 ): Promise<ProjectDto[]> {
   const res = await fetch(
-    `${import.meta.env.VITE_API_URL}/project/language?language=${language}`
+    `${
+      import.meta.env.VITE_API_URL
+    }/project/language?language=${encodeURIComponent(language)}`
   );
   if (res.ok) {
     return await res.json();
@@ -38,7 +40,9 @@ export async function GetProjectsByLanguage(
 
 export async function GetProjectsByTool(tool: string): Promise<ProjectDto[]> {
   const res = await fetch(
-    `${import.meta.env.VITE_API_URL}/project/tool?tool=${tool}`
+    `${import.meta.env.VITE_API_URL}/project/tool?tool=${encodeURIComponent(
+      tool
+    )}`
   );
   if (res.ok) {
     return await res.json();
