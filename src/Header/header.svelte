@@ -7,7 +7,7 @@
   <div class="subheader">
     <a href="https://github.com/frankyu02">https://github.com/frankyu02 </a>
     <span>{space} | {space}</span>
-    <p>f48yu@uwaterloo.ca</p>
+    <p>frankyu02@yahoo.ca</p>
   </div>
 </main>
 
