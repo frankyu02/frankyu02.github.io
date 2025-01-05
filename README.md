@@ -1,1 +1,1 @@
-Deployed at: https://frankyu02.github.io/home/
+Deployed at: https://frankyu02.github.io
